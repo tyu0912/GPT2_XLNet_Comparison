@@ -18,6 +18,7 @@ def set_seed(args):
     if args.n_gpu > 0:
         torch.cuda.manual_seed_all(args.seed)
 
+
 def score(sentence, tokenizer, model, args):
     tokenize_input = tokenizer.tokenize(sentence)
     tensor_input = torch.tensor([tokenizer.convert_tokens_to_ids(tokenize_input)])
