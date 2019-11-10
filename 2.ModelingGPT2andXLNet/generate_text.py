@@ -250,9 +250,9 @@ def main():
         if args.text_file is not None:  
             prompts = open(args.text_file,'r').read().splitlines()
             #out_inputs = args.text_file.replace(".txt","") + '_' + args.model_name_or_path + '_tuned_inputs.txt'
-            out_results = args.text_file.replace(".txt","") + '_' + args.model_name_or_path + '_tuned_results.txt'
+            out_results = args.text_file.replace(".txt","") + '_tuned_results.txt'
             #out_in = open(out_inputs, 'w+')
-            out_res = open(out_results, 'w+')
+            out_res = open(out_results, 'w')
             i = 0
             
             for i, prompt in enumerate(prompts):
