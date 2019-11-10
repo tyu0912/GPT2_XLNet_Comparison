@@ -1,5 +1,8 @@
 #!/bin/bash
 
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate w266-hugging
+
 learning_rates='1e-4 5e-5 1e-5'
 gradient_accumulation_steps='1 2 4'
 weight_decays='-0.5 0 0.5'
@@ -13,7 +16,7 @@ do
 for wd in $weight_decays
 do
 
-outpath="/home/tennisonyu/w266_project/2.ModelingGPT2andXLNet/processed_data/speech_level_train/obama/lr_${lr}_gas_${gas}_wd_${wd}" 
+outpath="/home/tennisonyu/w266_project/2.ModelingGPT2andXLNet/processed_data/sentence_level_train/obama/lr_${lr}_gas_${gas}_wd_${wd}" 
 mkdir $outpath
 
 python run_lm_finetuning.py \
@@ -21,9 +24,9 @@ python run_lm_finetuning.py \
 	--per_gpu_train_batch_size 2 \
 	--per_gpu_eval_batch_size 2 \
 	--overwrite_output_dir \
-	--train_data_file "/home/tennisonyu/w266_project/2.ModelingGPT2andXLNet/processed_data/speech_level_train/obama/train.txt" \
+	--train_data_file "/home/tennisonyu/w266_project/2.ModelingGPT2andXLNet/processed_data/sentence_level_train/obama/train.txt" \
 	--output_dir $outpath \
-	--eval_data_file "/home/tennisonyu/w266_project/2.ModelingGPT2andXLNet/processed_data/speech_level_train/obama/val.txt" \
+	--eval_data_file "/home/tennisonyu/w266_project/2.ModelingGPT2andXLNet/processed_data/sentence_level_train/obama/val.txt" \
 	--model_type gpt2 \
 	--model_name_or_path gpt2 \
 	--evaluate_during_training \
