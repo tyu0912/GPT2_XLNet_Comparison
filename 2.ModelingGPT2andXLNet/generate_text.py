@@ -248,26 +248,26 @@ def main():
             return text
        
         if args.text_file is not None:  
-            prompts = open(args.text_file,'r').read().splitlines()[:5]
-            out_inputs = args.text_file.replace(".txt","") + '_' + args.model_name_or_path + '_tuned_inputs.txt'
+            prompts = open(args.text_file,'r').read().splitlines()
+            #out_inputs = args.text_file.replace(".txt","") + '_' + args.model_name_or_path + '_tuned_inputs.txt'
             out_results = args.text_file.replace(".txt","") + '_' + args.model_name_or_path + '_tuned_results.txt'
-            out_in = open(out_inputs, 'w+')
+            #out_in = open(out_inputs, 'w+')
             out_res = open(out_results, 'w+')
             i = 0
             
-            for prompt in prompts:
+            for i, prompt in enumerate(prompts):
 
-                out_in.write(prompt + '\n')
+                #out_in.write(prompt + '\n')
                 result = run(prompt)
                 result = result.strip()
                 print(result)
-                out_line = result + '.\n'
+                out_line = prompt + '|' + prompts[i+1] + '|' +  result + '.\n'
                 out_res.write(out_line)
 
-                if i > 5:
-                    break
-                else:
-                    i += 1
+               # if i > 5:
+               #     break
+               # else:
+               #     i += 1
 
             break
 
