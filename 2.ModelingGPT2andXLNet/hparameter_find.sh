@@ -3,9 +3,9 @@
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate w266-hugging
 
-learning_rates='1e-4 5e-5 1e-5'
-gradient_accumulation_steps='1 2 4'
-weight_decays='-0.5 0 0.5'
+learning_rates='1e-4 5e-4 1e-3 5e-3 1e-2 5e-2 1e-1 5e-1'
+gradient_accumulation_steps='1'
+weight_decays='0 0.5 0.75'
 
 for lr in $learning_rates
 do
@@ -20,7 +20,7 @@ outpath="/home/tennisonyu/w266_project/2.ModelingGPT2andXLNet/processed_data/sen
 mkdir $outpath
 
 python run_lm_finetuning.py \
-	--num_train_epochs 10 \
+	--num_train_epochs 2 \
 	--per_gpu_train_batch_size 2 \
 	--per_gpu_eval_batch_size 2 \
 	--overwrite_output_dir \

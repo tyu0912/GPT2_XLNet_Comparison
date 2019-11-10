@@ -40,6 +40,25 @@ def main():
                 out.write(sentence)
             except:
                 pass
+
+    elif args.level == 'test':
+        out_path = 'testing_data_run/' + args.file
+        out = open(out_path, 'w')
+
+        fh = list(map(lambda x: x.split('.'), fh))
+        fh = [item for sublist in fh for item in sublist]
+        fh = list(map(lambda x: x.strip(), fh))
+
+        while "''" in fh:
+            fh = fh.remove('')
+
+        for sentence in fh:
+            try:
+                sentence = '<sod> ' + sentence + '.\n'
+                out.write(sentence)
+            except:
+                pass
+
             
 if __name__ == "__main__":
     main()
