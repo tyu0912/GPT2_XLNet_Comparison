@@ -20,3 +20,4 @@ python run_lm_finetuning.py \
 	--gradient_accumulation_steps 1 \
 	--weight_decay 0
 
+python generate_text.py --model_type gpt2 --model_name_or_path testing_data_run/obama/model/lr_1e-4_gas_1_wd_0.75/ --text_file testing_data_run/obama/test.txt --stop_token <eod> --length 75 --top_k 3

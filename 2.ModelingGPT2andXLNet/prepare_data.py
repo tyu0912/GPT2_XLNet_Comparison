@@ -36,7 +36,8 @@ def main():
         
         for i, sentence in enumerate(fh):
             try:
-                sentence = '<sod> ' + sentence + '.' + fh[i+1] + '. <eod>\n'
+                #sentence = '<sod> ' + sentence + '.' + fh[i+1] + '. <eod>\n'
+                sentence = sentence + '.' + fh[i+1] + '.\n'
                 out.write(sentence)
             except:
                 pass
@@ -54,7 +55,7 @@ def main():
 
         for sentence in fh:
             try:
-                sentence = '<sod> ' + sentence + '.\n'
+                sentence = sentence + '.\n'
                 out.write(sentence)
             except:
                 pass
