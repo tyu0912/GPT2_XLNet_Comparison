@@ -22,7 +22,7 @@ def main():
             out.write(sentence)
                                                                                                             
     elif args.level == 'sentence':
-        out_path = 'processed_data/sentence_level_train/' + args.file
+        out_path = 'processed_data/speech_level_train/' +  args.file
         out = open(out_path, 'w')
 
         fh = list(map(lambda x: x.split('.'), fh))
