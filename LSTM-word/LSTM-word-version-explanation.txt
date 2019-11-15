@@ -1,0 +1,6 @@
+Attempt 1: Obama one-hot encoding
+Attempt 2: Obama Google pretrained
+Attempt 3: Obama Google pretrained2
+    (treat . and , the same, but different from unknown words)
+    slightly less overfitting compared to Attempt 2
+Attempt 4: 
