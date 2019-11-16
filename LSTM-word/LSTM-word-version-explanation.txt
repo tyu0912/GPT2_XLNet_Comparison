@@ -3,4 +3,5 @@ Attempt 2: Obama Google pretrained
 Attempt 3: Obama Google pretrained2
     (treat . and , the same, but different from unknown words)
     slightly less overfitting compared to Attempt 2
-Attempt 4: 
+Attempt 4: All president Google pretrained2
+Attempt 5: 2 layers of LSTM with 256 nodes, no dropout

@@ -165,23 +165,23 @@ print(vocab_size)
 print(emdedding_size)
 
 model = keras.Sequential()
-model.add(Embedding(input_dim=vocab_size, output_dim=emdedding_size, weights=[pretrained_weights_mini],trainable=True))
-model.add(LSTM(emdedding_size))
-model.add(Dropout(0.2))
+model.add(Embedding(input_dim=vocab_size, output_dim=emdedding_size, weights=[pretrained_weights_mini],trainable=False))
+model.add(LSTM(units = 256, return_sequences = True))
+model.add(LSTM(units = 256))
 model.add(Dense(vocab_size, activation='softmax'))
 
 model.compile(loss='sparse_categorical_crossentropy', optimizer='rmsprop')
 
 
-checkpoint_path = "model_history_attempt4/checkpoint_model-{epoch:03d}.hdf5"
+checkpoint_path = "model_history_attempt5/checkpoint_model-{epoch:03d}.hdf5"
 checkpoint = keras.callbacks.ModelCheckpoint(checkpoint_path, monitor='loss', verbose=1, save_best_only=True, save_weights_only=False)
 desired_callbacks = [checkpoint]
 
-history = model.fit(train_X, train_Y, epochs=100, batch_size=6400, validation_data=(val_X,val_Y), callbacks=desired_callbacks)
-model.save('model_history_attempt4/checkpoint_model.hdf5') 
+history = model.fit(train_X, train_Y, epochs=50, batch_size=3200, validation_data=(val_X,val_Y), callbacks=desired_callbacks)
+model.save('model_history_attempt5/checkpoint_model.hdf5') 
 
 train_loss = history.history['loss']
 val_loss = history.history['val_loss']
 
-np.savetxt("model_history_attempt4/loss_history_train.txt", np.array(train_loss), delimiter=",")
-np.savetxt("model_history_attempt4/loss_history_val.txt", np.array(val_loss), delimiter=",")
+np.savetxt("model_history_attempt5/loss_history_train.txt", np.array(train_loss), delimiter=",")
+np.savetxt("model_history_attempt5/loss_history_val.txt", np.array(val_loss), delimiter=",")
