@@ -261,7 +261,7 @@ def main():
                 result = run(prompt)
                 result = result.strip()
                 print(result)
-                out_line = prompt + '|' + prompts[i+1] + '|' +  result + '.\n'
+                out_line = '<new_line>' + prompt +'<entry>' + prompts[i+1] + '<entry>' + result + '.<end_line>'
                 out_res.write(out_line)
 
                # if i > 5:
